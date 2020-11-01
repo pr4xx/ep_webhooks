@@ -76,7 +76,7 @@ exports.handleMessage = function (hook_name, context, cb) {
         var messageType = _.get(context.message, 'data.type');
 
         if (messageType === 'USER_CHANGES') {
-            var user = _.get(context, 'client.conn.request.session.user');
+            var user = _.get(context, 'client.conn.request.session.user', {});
             var clientId = _.get(context, 'client.id');
             var rev = _.get(padMessageHandler, 'sessioninfos[' + clientId + '].rev');
             var padId = _.get(padMessageHandler, 'sessioninfos[' + clientId + '].padId');
